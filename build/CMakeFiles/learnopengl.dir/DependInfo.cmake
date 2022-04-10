@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/max/Documents/2eINF/ComputerGraphics/learnopengl/glad.c" "/home/max/Documents/2eINF/ComputerGraphics/learnopengl/build/CMakeFiles/learnopengl.dir/glad.c.o"
+  "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/glad.c" "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/build/CMakeFiles/learnopengl.dir/glad.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -13,7 +13,7 @@ set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/max/Documents/2eINF/ComputerGraphics/learnopengl/main.cpp" "/home/max/Documents/2eINF/ComputerGraphics/learnopengl/build/CMakeFiles/learnopengl.dir/main.cpp.o"
+  "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/main.cpp" "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/build/CMakeFiles/learnopengl.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

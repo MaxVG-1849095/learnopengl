@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/max/Documents/2eINF/ComputerGraphics/learnopengl/main.cpp
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/main.cpp
 glad/glad.h
 -
 GLFW/glfw3.h
