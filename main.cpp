@@ -1,32 +1,33 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-
+#include <cmath>
 bool wireframing = false;
 // shaders, Vertexshader zorgt voor het 
 // Fragment shader zorgt voor de kleur 
 const char *vertexShaderSource ="#version 330 core\n"
     "layout (location = 0) in vec3 aPos;\n"
-    "out vec4 vertexColor;\n" //twee in en out met dezelfde namen worden gelinked door opengl bij linking
+    "layout (location = 1) in vec3 aColor;\n"
+    "out vec3 ourColor;\n"
     "void main()\n"
     "{\n"
     "   gl_Position = vec4(aPos, 1.0);\n"
-    "   vertexColor=vec4(0.5,0.0,0.0,1.0);\n"
+    "   ourColor = aColor;\n"
     "}\0";
 
 const char *fragmentShaderSource = "#version 330 core\n"
     "out vec4 FragColor;\n"
-    "in vec4 vertexColor;\n"
+    "in vec3 ourColor;\n"
     "void main()\n"
     "{\n"
-    "   FragColor = vertexColor;\n"
+    "   FragColor = vec4(ourColor, 1.0f);\n"
     "}\n\0";
     const char *fragmentShaderSource2 = "#version 330 core\n"
     "out vec4 FragColor;\n"
-    "uniform vec4 ourColor;\n"
+    "in vec3 ourColor;\n"
     "void main()\n"
     "{\n"
-    "   FragColor = ourColor;\n"
+    "   FragColor = vec4(ourColor, 1.0f);\n"
     "}\n\0";
 // prototypes
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
@@ -146,14 +147,15 @@ int main()
     //     -0.5f, 0.5f, 0.0f   // top left
     // };
     float vertices[] = {
-        -0.75f, -0.5f, 0.0f,
-        -0.25f, -0.5f, 0.0f,
-        -0.25f, 0.5f, 0.0f,
+        -0.75f, -0.5f, 0.0f, 1.0f,0.0f,0.0f,
+        -0.25f, -0.5f, 0.0f, 0.0f,1.0f,0.0f,
+        -0.25f, 0.5f, 0.0f,  0.0f,0.0f,1.0f,
 
         
-        0.25f, -0.5f, 0.0f,
-        0.75f, -0.5f, 0.0f,
-        0.25f, 0.5f, 0.0f};
+        0.25f, -0.5f, 0.0f,0.0f,0.0f,1.0f,
+        0.75f, -0.5f, 0.0f,0.0f,1.0f,0.0f,
+        0.25f, 0.5f, 0.0f,1.0f,0.0f,0.0f
+        };
     unsigned int indices[] = {
         // note that we start from 0!
         0, 1, 3, // first triangle
@@ -173,8 +175,11 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0); // hoe opengl de vertex data moet interpreteren (vertex pos, size(vec3 ->3 vals),type,data normaliseren?, stride, offset met typecast  )
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)0); // hoe opengl de vertex data moet interpreteren (vertex pos, size(vec3 ->3 vals),type,data normaliseren?, stride, offset met typecast  )
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
+    glEnableVertexAttribArray(1);
+
 
     while (!glfwWindowShouldClose(window)) // render loop
     {
@@ -190,6 +195,10 @@ int main()
 
 
         glUseProgram(shaderProgram[1]);
+        // int colorLocation = glGetUniformLocation(shaderProgram[1], "ourColor"); //haal locatie van uniform op
+        // float timeValue = glfwGetTime();
+        // float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+        // glUniform4f(colorLocation, 0.0f,greenValue,0.0f,1.0f); //stuur groen door naar uniform
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES,3,3);
         if (wireframing)
