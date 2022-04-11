@@ -3,25 +3,31 @@
 #include <iostream>
 
 bool wireframing = false;
-// shader
-const char *vertexShaderSource = "#version 330 core\n"
-                                 "layout (location = 0) in vec3 aPos;\n"
-                                 "void main()\n"
-                                 "{\n"
-                                 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-                                 "}\0";
+// shaders, Vertexshader zorgt voor het 
+// Fragment shader zorgt voor de kleur 
+const char *vertexShaderSource ="#version 330 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "out vec4 vertexColor;\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = vec4(aPos, 1.0);\n"
+    "   vertexColor=vec4(0.5,0.0,0.0,1.0);\n"
+    "}\0";
+
 const char *fragmentShaderSource = "#version 330 core\n"
-                                   "out vec4 FragColor;\n"
-                                   "void main()\n"
-                                   "{\n"
-                                   "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n" // fragnent shader heeft aar 1 output nodig en dit is een vector met grootte 4 voor de kleur
-                                   "}\n\0";
-const char *fragmentShaderSource2 = "#version 330 core\n"
-                                   "out vec4 FragColor;\n"
-                                   "void main()\n"
-                                   "{\n"
-                                   "   FragColor = vec4(1.0f, 1.0f, 0.2f, 1.0f);\n" // fragnent shader heeft aar 1 output nodig en dit is een vector met grootte 4 voor de kleur
-                                   "}\n\0";
+    "out vec4 FragColor;\n"
+    "in vec4 vertexColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = vertexColor;\n"
+    "}\n\0";
+    const char *fragmentShaderSource2 = "#version 330 core\n"
+    "out vec4 FragColor;\n"
+    "uniform vec4 ourColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = ourColor;\n"
+    "}\n\0";
 // prototypes
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -143,6 +149,8 @@ int main()
         -0.75f, -0.5f, 0.0f,
         -0.25f, -0.5f, 0.0f,
         -0.25f, 0.5f, 0.0f,
+
+        
         0.25f, -0.5f, 0.0f,
         0.75f, -0.5f, 0.0f,
         0.25f, 0.5f, 0.0f};
@@ -183,7 +191,7 @@ int main()
 
         glUseProgram(shaderProgram[1]);
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES,2,3);
+        glDrawArrays(GL_TRIANGLES,3,3);
         if (wireframing)
         {
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // wireframe mode
