@@ -14,6 +14,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/main.cpp" "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/build/CMakeFiles/learnopengl.dir/main.cpp.o"
+  "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/stb_image.cpp" "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/build/CMakeFiles/learnopengl.dir/stb_image.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

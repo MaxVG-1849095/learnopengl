@@ -177,6 +177,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/learnopengl.dir/build.make CMakeFiles/learnopengl.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+stb_image.o: stb_image.cpp.o
+
+.PHONY : stb_image.o
+
+# target to build an object file
+stb_image.cpp.o:
+	$(MAKE) -f CMakeFiles/learnopengl.dir/build.make CMakeFiles/learnopengl.dir/stb_image.cpp.o
+.PHONY : stb_image.cpp.o
+
+stb_image.i: stb_image.cpp.i
+
+.PHONY : stb_image.i
+
+# target to preprocess a source file
+stb_image.cpp.i:
+	$(MAKE) -f CMakeFiles/learnopengl.dir/build.make CMakeFiles/learnopengl.dir/stb_image.cpp.i
+.PHONY : stb_image.cpp.i
+
+stb_image.s: stb_image.cpp.s
+
+.PHONY : stb_image.s
+
+# target to generate assembly for a file
+stb_image.cpp.s:
+	$(MAKE) -f CMakeFiles/learnopengl.dir/build.make CMakeFiles/learnopengl.dir/stb_image.cpp.s
+.PHONY : stb_image.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... stb_image.o"
+	@echo "... stb_image.i"
+	@echo "... stb_image.s"
 .PHONY : help
 
 

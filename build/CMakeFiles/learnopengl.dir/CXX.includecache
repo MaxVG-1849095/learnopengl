@@ -15,6 +15,8 @@ iostream
 -
 cmath
 -
+stb_image.h
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/stb_image.h
 shader.h
 /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/shader.h
 
@@ -28,5 +30,37 @@ fstream
 sstream
 -
 iostream
+-
+
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/stb_image.h
+stb_image.h
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/stb_image.h
+stdio.h
+-
+stdlib.h
+-
+stdarg.h
+-
+stddef.h
+-
+stdlib.h
+-
+string.h
+-
+limits.h
+-
+math.h
+-
+stdio.h
+-
+assert.h
+-
+stdint.h
+-
+emmintrin.h
+-
+intrin.h
+-
+arm_neon.h
 -
 

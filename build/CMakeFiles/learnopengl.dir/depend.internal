@@ -6,3 +6,7 @@ CMakeFiles/learnopengl.dir/glad.c.o
 CMakeFiles/learnopengl.dir/main.cpp.o
  /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/main.cpp
  /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/shader.h
+ /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/stb_image.h
+CMakeFiles/learnopengl.dir/stb_image.cpp.o
+ /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/stb_image.cpp
+ /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/stb_image.h

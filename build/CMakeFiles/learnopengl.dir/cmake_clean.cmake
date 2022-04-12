@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/learnopengl.dir/glad.c.o"
   "CMakeFiles/learnopengl.dir/main.cpp.o"
+  "CMakeFiles/learnopengl.dir/stb_image.cpp.o"
   "learnopengl"
   "learnopengl.pdb"
 )
