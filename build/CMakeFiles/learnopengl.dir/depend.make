@@ -4,4 +4,5 @@
 CMakeFiles/learnopengl.dir/glad.c.o: ../glad.c
 
 CMakeFiles/learnopengl.dir/main.cpp.o: ../main.cpp
+CMakeFiles/learnopengl.dir/main.cpp.o: ../shader.h
 
