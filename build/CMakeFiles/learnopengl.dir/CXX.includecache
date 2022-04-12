@@ -13,7 +13,7 @@ GLFW/glfw3.h
 -
 iostream
 -
-fstream
+cmath
 -
 shader.h
 /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/shader.h
