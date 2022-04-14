@@ -256,11 +256,7 @@ int main()
     // trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f)); //aanmaken transformatiematrix
     // vec = trans * vec; //transformatie uitvoeren op de vector via transformatiematrix
     // std::cout << vec.x << vec.y << vec.z << std::endl;
-
-    glm::mat4 trans = glm::mat4(1.0f);                                         // identiteitsmatrix
-    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0)); // roteer met 90 graden rond de z-as
-    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));                       // scale met 0.5 op iedere kant
-
+    float rotation = 0.0f;
     while (!glfwWindowShouldClose(window)) // render loop
     {
         // input
@@ -270,7 +266,7 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // zet de clearkleur
         glClear(GL_COLOR_BUFFER_BIT);         // clear het scherm naar de kleur
         // glUseProgram(shaderProgram[0]);
-        // ourShader.use();
+        // ourShader.use();u
         // glBindVertexArray(VAO);
         // glDrawArrays(GL_TRIANGLES, 0, 3); //(primitive, startindex, aantal vertices) (voor vertex tekenen)
 
@@ -290,6 +286,14 @@ int main()
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
 
+        
+        rotation += 1.0f;
+        std::cout << rotation << std::endl;
+        glm::mat4 trans = glm::mat4(1.0f);                                         // identiteitsmatrix
+        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 1.0f));               // beweging met 1 op iedere as
+        trans = glm::rotate(trans, glm::radians(rotation), glm::vec3(0.0, 0.0, 1.0)); // roteer met 90 graden rond de z-as
+        trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));                       // scale met 0.5 op iedere kant
+        
         // render container
         ourShader.use();
         unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
