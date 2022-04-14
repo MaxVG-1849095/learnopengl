@@ -1,9 +1,13 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include <cmath>
 #include "stb_image.h"
 #include "shader.h"
+
 bool wireframing = false;
 // shaders, Vertexshader zorgt voor het
 // Fragment shader zorgt voor de kleur
@@ -150,32 +154,27 @@ int main()
     //     -0.5f, 0.5f, 0.0f   // top left
     // };
 
-    
-    
-    
     //---------------------------------------------
     // vertices
     //---------------------------------------------
     float vertices[] = {
         // positions          // colors           // texture coords
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
+        0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,   // top right
+        0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
+        -0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f   // top left
     };
-    
+
     unsigned int indices[] = {
         // voor EBO met drawelement
         // note that we start from 0!
         0, 1, 3, // first triangle
         1, 2, 3  // second triangle
     };
-    
 
     unsigned int VAO;
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
-
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
@@ -189,24 +188,23 @@ int main()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // hoe opengl de vertex data moet interpreteren (vertex pos, size(vec3 ->3 vals),type,data normaliseren?, stride, offset met typecast  )
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0); // hoe opengl de vertex data moet interpreteren (vertex pos, size(vec3 ->3 vals),type,data normaliseren?, stride, offset met typecast  )
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float))); // kleur data
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float))); // kleur data
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // texture data
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float))); // texture data
     glEnableVertexAttribArray(2);
-
 
     //---------------------------------------------
     // Textures
     //---------------------------------------------
     int width, height, nrChannels;
 
-    unsigned int texture;                                                              // texture object
-    glGenTextures(1, &texture);                                                        // aantal textures, int voor id
-    glBindTexture(GL_TEXTURE_2D, texture);                                             // binding texture to id
-     // set the texture wrapping parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+    unsigned int texture;                                         // texture object
+    glGenTextures(1, &texture);                                   // aantal textures, int voor id
+    glBindTexture(GL_TEXTURE_2D, texture);                        // binding texture to id
+                                                                  // set the texture wrapping parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // set texture wrapping to GL_REPEAT (default wrapping method)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     // set texture filtering parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
@@ -222,9 +220,46 @@ int main()
     {
         std::cout << "Failed to load texture" << std::endl;
     }
-
     stbi_image_free(data);
-    
+
+    unsigned int texture2;
+    glGenTextures(1, &texture2);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    // set the texture wrapping parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // set texture wrapping to GL_REPEAT (default wrapping method)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // set texture filtering parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load image, create texture and generate mipmaps
+    stbi_set_flip_vertically_on_load(true); // flip face
+    data = stbi_load("awesomeface.png", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        // note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
+    stbi_image_free(data);
+
+    ourShader.use();
+
+    glUniform1i(glGetUniformLocation(ourShader.ID, "texture"), 0); // manier 1
+    ourShader.setInt("texture2", 1);                               // manier 2
+
+    // glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f); //maak vector aan
+    // glm::mat4 trans = glm::mat4(1.0f); //transformatiematrix (dit is identiteitsmatrix!)
+    // trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f)); //aanmaken transformatiematrix
+    // vec = trans * vec; //transformatie uitvoeren op de vector via transformatiematrix
+    // std::cout << vec.x << vec.y << vec.z << std::endl;
+
+    glm::mat4 trans = glm::mat4(1.0f);                                         // identiteitsmatrix
+    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0)); // roteer met 90 graden rond de z-as
+    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));                       // scale met 0.5 op iedere kant
 
     while (!glfwWindowShouldClose(window)) // render loop
     {
@@ -249,15 +284,18 @@ int main()
         // glBindVertexArray(VAO);
         // glDrawArrays(GL_TRIANGLES, 3, 3);
 
-        
-        // bind Texture
+        // bind textures on corresponding texture units
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, texture2);
 
         // render container
         ourShader.use();
+        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
 
         if (wireframing)
         {
@@ -271,13 +309,9 @@ int main()
         // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);//Gebruikt de EBO
         // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); //element tekenen
 
-         
-
-
         // pollevents en swapbuffers
         glfwSwapBuffers(window);
         glfwPollEvents();
-        
     }
 
     glfwTerminate();
