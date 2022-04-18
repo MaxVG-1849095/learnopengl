@@ -257,6 +257,7 @@ int main()
     // vec = trans * vec; //transformatie uitvoeren op de vector via transformatiematrix
     // std::cout << vec.x << vec.y << vec.z << std::endl;
     float rotation = 0.0f;
+
     while (!glfwWindowShouldClose(window)) // render loop
     {
         // input
@@ -286,20 +287,45 @@ int main()
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
 
-        
-        rotation += 1.0f;
-        std::cout << rotation << std::endl;
-        glm::mat4 trans = glm::mat4(1.0f);                                         // identiteitsmatrix
-        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 1.0f));               // beweging met 1 op iedere as
-        trans = glm::rotate(trans, glm::radians(rotation), glm::vec3(0.0, 0.0, 1.0)); // roteer met 90 graden rond de z-as
-        trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));                       // scale met 0.5 op iedere kant
-        
+        // rotation += 1.0f;
+        // std::cout << rotation << std::endl;
+        // glm::mat4 trans = glm::mat4(1.0f);                                         // identiteitsmatrix
+        // trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 1.0f));               // beweging met 1 op iedere as
+        // trans = glm::rotate(trans, glm::radians(rotation), glm::vec3(0.0, 0.0, 1.0)); // roteer met 90 graden rond de z-as
+        // trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));                       // scale met 0.5 op iedere kant
+
         // render container
         ourShader.use();
-        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+        // create transformations
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)); //plat leggen
+
+        glm::mat4 view = glm::mat4(1.0f);
+        // note that we're translating the scene in the reverse direction of where we want to move
+        view = glm::translate(view, glm::vec3(0.0f, -0.5f, -3.0f)); // weg in de z richting (moet binnen -1 1 blijven voor x en y!)
+
+        glm::mat4 projection;
+        projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f); //perspective (fov, screensize, close, far) close en far zijn standardised
+
+        //passing uniforms to shader
+        int modelLoc = glGetUniformLocation(ourShader.ID, "model");
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+        int viewLoc = glGetUniformLocation(ourShader.ID, "view");
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+
+        int projLoc = glGetUniformLocation(ourShader.ID, "projection");
+        glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+        // unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+        // glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        // glm::mat4 trans2 = glm::mat4(1.0f);                                         // identiteitsmatrix
+        // trans2 = glm::translate(trans2, glm::vec3(0.5f, 0.5f, 1.0f));               // beweging met 1 op iedere as
+        // glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans2));
+        // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         if (wireframing)
         {
