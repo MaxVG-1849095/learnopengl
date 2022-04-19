@@ -7,8 +7,12 @@
 #include <cmath>
 #include "stb_image.h"
 #include "shader.h"
-
+#include "camera.h"
+float camX = 0.0f;
+float camZ = 0.0f;
+Camera cam = Camera();
 bool wireframing = false;
+
 // shaders, Vertexshader zorgt voor het
 // Fragment shader zorgt voor de kleur
 const char *vertexShaderSource = "#version 330 core\n"
@@ -321,6 +325,8 @@ int main()
         glm::vec3(1.5f, 0.2f, -1.5f),
         glm::vec3(-1.3f, 1.0f, -1.5f)};
     float rotateAngle = 0.0f;
+
+    
     while (!glfwWindowShouldClose(window)) // render loop
     {
         // input
@@ -364,9 +370,17 @@ int main()
         // // model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)); //plat leggen
         // model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
 
-        glm::mat4 view = glm::mat4(1.0f);
-        // note that we're translating the scene in the reverse direction of where we want to move
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); // weg in de z richting (moet binnen -1 1 blijven voor x en y!)
+        // glm::mat4 view = glm::mat4(1.0f);
+        // // note that we're translating the scene in the reverse direction of where we want to move
+        // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); // weg in de z richting (moet binnen -1 1 blijven voor x en y!)
+
+        glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        float radius = 10.0f;
+        // float camX = static_cast<float>(sin(glfwGetTime()) * radius);
+        // float camZ = static_cast<float>(cos(glfwGetTime()) * radius);
+        // view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)); //positie, target, up vector
+
+        view = cam.lookAt();
 
         glm::mat4 projection;
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f); // perspective (fov, screensize, close, far) close en far zijn standardised
@@ -392,13 +406,15 @@ int main()
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
-            if(i % 3 ==0){
+            if (i % 3 == 0)
+            {
                 model = glm::rotate(model, glm::radians(angle + rotateAngle), glm::vec3(1.0f, 0.3f, 0.5f));
             }
-            else{
+            else
+            {
                 model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             }
-            
+
             int modelLoc = glGetUniformLocation(ourShader.ID, "model");
             glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
@@ -453,5 +469,37 @@ void processInput(GLFWwindow *window)
         std::cout << "Wireframing" << std::endl;
         wireframing = !wireframing;
         std::cout << wireframing << std::endl;
+    }
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) // p = print message
+    {
+        cam.goForward();
+    }
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) // p = print message
+    {
+        cam.goBackward();
+    }
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) // p = print message
+    {
+        cam.goRight();
+    }
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) // p = print message
+    {
+        cam.goLeft();
+    }
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) // p = print message
+    {
+        cam.pitchUp();
+    }
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) // p = print message
+    {
+        cam.pitchDown();
+    }
+    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) // p = print message
+    {
+        cam.yawUp();
+    }
+    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) // p = print message
+    {
+        cam.yawDown();
     }
 }
