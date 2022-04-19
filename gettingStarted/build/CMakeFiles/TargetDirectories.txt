@@ -1,3 +1,0 @@
-/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/build/CMakeFiles/rebuild_cache.dir
-/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/build/CMakeFiles/edit_cache.dir
-/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/build/CMakeFiles/learnopengl.dir

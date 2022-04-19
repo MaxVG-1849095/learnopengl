@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting
+CMAKE_SOURCE_DIR = /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build
+CMAKE_BINARY_DIR = /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/learnopengl.dir/depend.make
@@ -59,42 +59,42 @@ include CMakeFiles/learnopengl.dir/flags.make
 
 CMakeFiles/learnopengl.dir/glad.c.o: CMakeFiles/learnopengl.dir/flags.make
 CMakeFiles/learnopengl.dir/glad.c.o: ../glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/learnopengl.dir/glad.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/learnopengl.dir/glad.c.o   -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/learnopengl.dir/glad.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/learnopengl.dir/glad.c.o   -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/glad.c
 
 CMakeFiles/learnopengl.dir/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/learnopengl.dir/glad.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/glad.c > CMakeFiles/learnopengl.dir/glad.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/glad.c > CMakeFiles/learnopengl.dir/glad.c.i
 
 CMakeFiles/learnopengl.dir/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/learnopengl.dir/glad.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/glad.c -o CMakeFiles/learnopengl.dir/glad.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/glad.c -o CMakeFiles/learnopengl.dir/glad.c.s
 
 CMakeFiles/learnopengl.dir/main.cpp.o: CMakeFiles/learnopengl.dir/flags.make
 CMakeFiles/learnopengl.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/learnopengl.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/learnopengl.dir/main.cpp.o -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/learnopengl.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/learnopengl.dir/main.cpp.o -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/main.cpp
 
 CMakeFiles/learnopengl.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/learnopengl.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/main.cpp > CMakeFiles/learnopengl.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/main.cpp > CMakeFiles/learnopengl.dir/main.cpp.i
 
 CMakeFiles/learnopengl.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/learnopengl.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/main.cpp -o CMakeFiles/learnopengl.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/main.cpp -o CMakeFiles/learnopengl.dir/main.cpp.s
 
 CMakeFiles/learnopengl.dir/stb_image.cpp.o: CMakeFiles/learnopengl.dir/flags.make
 CMakeFiles/learnopengl.dir/stb_image.cpp.o: ../stb_image.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/learnopengl.dir/stb_image.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/learnopengl.dir/stb_image.cpp.o -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/stb_image.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/learnopengl.dir/stb_image.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/learnopengl.dir/stb_image.cpp.o -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/stb_image.cpp
 
 CMakeFiles/learnopengl.dir/stb_image.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/learnopengl.dir/stb_image.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/stb_image.cpp > CMakeFiles/learnopengl.dir/stb_image.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/stb_image.cpp > CMakeFiles/learnopengl.dir/stb_image.cpp.i
 
 CMakeFiles/learnopengl.dir/stb_image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/learnopengl.dir/stb_image.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/stb_image.cpp -o CMakeFiles/learnopengl.dir/stb_image.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/stb_image.cpp -o CMakeFiles/learnopengl.dir/stb_image.cpp.s
 
 # Object files for target learnopengl
 learnopengl_OBJECTS = \
@@ -110,7 +110,7 @@ learnopengl: CMakeFiles/learnopengl.dir/main.cpp.o
 learnopengl: CMakeFiles/learnopengl.dir/stb_image.cpp.o
 learnopengl: CMakeFiles/learnopengl.dir/build.make
 learnopengl: CMakeFiles/learnopengl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable learnopengl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable learnopengl"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/learnopengl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -123,6 +123,6 @@ CMakeFiles/learnopengl.dir/clean:
 .PHONY : CMakeFiles/learnopengl.dir/clean
 
 CMakeFiles/learnopengl.dir/depend:
-	cd /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/lighting/build/CMakeFiles/learnopengl.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/lighting/build/CMakeFiles/learnopengl.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/learnopengl.dir/depend
 
