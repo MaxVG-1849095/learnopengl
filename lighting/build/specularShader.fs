@@ -1,4 +1,5 @@
 #version 330 core
+//Shading met lichtbron die rekening houdt met de positie van de kijker
 out vec4 FragColor;
 
 in vec3 Normal;  

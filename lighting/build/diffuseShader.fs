@@ -1,4 +1,6 @@
 #version 330 core
+
+//Basic shading met lichtbron
 out vec4 FragColor;
 
 in vec3 Normal;  
