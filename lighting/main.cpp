@@ -48,7 +48,7 @@ int main()
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
 
-    Shader lightingShader("diffuseShader.vs", "diffuseShader.fs"); // you can name your shader files however you like
+    Shader lightingShader("diffuseShader.vs", "specularShader.fs"); // you can name your shader files however you like
     Shader lightCubeShader("Shader.vs", "Shader2.fs");
 
     float vertices[] = {
@@ -122,6 +122,8 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
+    float rotateAngle = 0.0f;
+
     while (!glfwWindowShouldClose(window)) // render loop
     {
         // input
@@ -136,8 +138,9 @@ int main()
         // be sure to activate shader when setting uniforms/drawing objects
         lightingShader.use();
         lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setVec3("lightColor", 0.0f, 0.0f, 1.0f);
         lightingShader.setVec3("lightPos", lightPos);
+        lightingShader.setVec3("viewPos", cam.getcameraPos()); //geef camera positie door
 
         // view/projection transformations
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f); // perspective (fov, screensize, close, far) close en far zijn standardised
@@ -147,6 +150,9 @@ int main()
 
         // world transformation
         glm::mat4 model = glm::mat4(1.0f);
+        rotateAngle += 1.0f;
+        //rotate the cube
+        model = glm::rotate(model, glm::radians(rotateAngle), glm::vec3(0.0f, 1.0f, 0.0f));
         lightingShader.setMat4("model", model);
 
         // render the cube
