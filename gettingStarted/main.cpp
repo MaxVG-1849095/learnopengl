@@ -502,4 +502,9 @@ void processInput(GLFWwindow *window)
     {
         cam.yawDown();
     }
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) // p = print message
+    {
+        std::cout << "jumping" << std::endl;
+        cam.startJump();
+    }
 }
