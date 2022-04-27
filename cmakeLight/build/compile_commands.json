@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/build",
+  "command": "/usr/bin/gcc   -g   -o CMakeFiles/learnopengl.dir/glad.c.o   -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/glad.c",
+  "file": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/glad.c"
+},
+{
+  "directory": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/learnopengl.dir/main.cpp.o -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/main.cpp",
+  "file": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/main.cpp"
+},
+{
+  "directory": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/learnopengl.dir/stb_image.cpp.o -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/stb_image.cpp",
+  "file": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/stb_image.cpp"
+}
+]

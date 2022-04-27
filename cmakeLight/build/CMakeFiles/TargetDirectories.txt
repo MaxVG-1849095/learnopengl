@@ -1,0 +1,5 @@
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/build/CMakeFiles/edit_cache.dir
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/build/CMakeFiles/package_source.dir
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/build/CMakeFiles/rebuild_cache.dir
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/build/CMakeFiles/package.dir
+/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeLight/build/CMakeFiles/learnopengl.dir

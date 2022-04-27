@@ -1,0 +1,1 @@
+/usr/bin/g++  -g  -rdynamic CMakeFiles/Models.dir/main.cpp.o CMakeFiles/Models.dir/glad.c.o CMakeFiles/Models.dir/stb_image.cpp.o  -o Models  -lGL -ldl -lglfw -lassimp 

@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/Models.dir/main.cpp.o -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/main.cpp",
+  "file": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/main.cpp"
+},
+{
+  "directory": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/build",
+  "command": "/usr/bin/gcc   -g   -o CMakeFiles/Models.dir/glad.c.o   -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/glad.c",
+  "file": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/glad.c"
+},
+{
+  "directory": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/Models.dir/stb_image.cpp.o -c /home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/stb_image.cpp",
+  "file": "/home/max/Documents/2eINF/ComputerGraphics/learnopenglgit/learnopengl/cmakeTest/stb_image.cpp"
+}
+]

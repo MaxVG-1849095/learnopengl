@@ -1,0 +1,48 @@
+cmake_minimum_required(VERSION 3.0.0)
+
+project(learnopengl)
+
+add_executable(${PROJECT_NAME} glad.c main.cpp shader.h camera.h stb_image.h stb_image.cpp)
+
+find_package(glm REQUIRED)
+
+target_link_libraries(${PROJECT_NAME} GL dl glfw)
+
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Shader.vs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Shader1.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Shader2.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/ambientShader.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/diffuseShader.vs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/diffuseShader.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/2.1.basic_lighting.vs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/2.1.basic_lighting.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/2.1.light_cube.vs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/2.1.light_cube.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/specularShader.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/materialShader.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/container2.png
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/diffuseMapShader.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/diffuseMapShader.vs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/container2_specular.png
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/multipleLightShader.vs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/multipleLightShader.fs
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+    

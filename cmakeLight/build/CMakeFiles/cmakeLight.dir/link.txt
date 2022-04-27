@@ -1,0 +1,1 @@
+/usr/bin/g++  -g  -rdynamic CMakeFiles/cmakeLight.dir/glad.c.o CMakeFiles/cmakeLight.dir/main.cpp.o CMakeFiles/cmakeLight.dir/stb_image.cpp.o  -o cmakeLight  -lGL -ldl -lglfw 
