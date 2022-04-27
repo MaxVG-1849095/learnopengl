@@ -127,9 +127,11 @@ int main()
     // texture
     // -----------------------------------------------------------------------------
     unsigned int diffuseMap = loadTexture("container2.png");
+    unsigned int specularMap = loadTexture("container2_specular.png"); //tweede png voor het metaal apart
 
     lightingShader.use(); 
     lightingShader.setInt("material.diffuse", 0);
+    lightingShader.setInt("material.specular", 1); 
 
     float rotateAngle = 0.0f;
 
@@ -146,17 +148,16 @@ int main()
 
         // be sure to activate shader when setting uniforms/drawing objects
         lightingShader.use();
+        lightingShader.setVec3("light.position", lightPos);
         lightingShader.setVec3("viewPos", cam.getcameraPos());
 
         // light properties
-        lightingShader.setVec3("light.position", lightPos);
-        lightingShader.setVec3("light.color", 1.0f,1.0f,1.0f);
-        lightingShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f); 
+        lightingShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
         lightingShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
+        lightingShader.setVec3("light.color", 1.0f,1.0f,1.0f);
         // material properties
-        lightingShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
         lightingShader.setFloat("material.shininess", 64.0f);
         
         // view/projection transformations
@@ -171,6 +172,13 @@ int main()
         // // rotate the cube
         // model = glm::rotate(model, glm::radians(rotateAngle), glm::vec3(0.0f, 1.0f, 0.0f));
         lightingShader.setMat4("model", model);
+
+        // bind diffuse map
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, diffuseMap);
+        // bind specular map
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, specularMap);
 
         // render the cube
         glBindVertexArray(cubeVAO);
